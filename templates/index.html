@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riddle Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .btn {
+            margin-top: 20px;
+        }
+        #answerBox {
+            display: none; /* Initially hidden */
+        }
+    </style>
+    <script>
+        function showAnswer() {
+            var answerBox = document.getElementById('answerBox');
+            if (answerBox) {
+                answerBox.style.display = 'block'; // This will show the answer box when clicked
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container text-center">
+        <div class="card p-4">
+            <h2>Riddle Game</h2>
+            <p>Answer the riddles correctly to win the game!</p>
+            <p><strong>Rules:</strong> You have to answer 10 riddles. If you answer 7 or more correctly, you win! Otherwise, you lose!</p>
+            <h4>Riddle {{ question_number }}/{{ total_questions }}</h4>
+            <p>{{ riddle }}</p>
+        </div>
+
+        <form method="POST">
+            <input type="text" name="answer" class="form-control" placeholder="Your Answer" required>
+            <button type="submit" class="btn btn-primary">Submit Answer</button>
+        </form>
+
+        <button class="btn btn-info" onclick="showAnswer()">Show Answer</button>
+
+        <div id="answerBox" class="card p-2 mt-3">
+            <h5>Correct Answer:</h5>
+            <p>{{ answer }}</p> <!-- This will hold the correct answer -->
+        </div>
+    </div>
+</body>
+</html>
+
